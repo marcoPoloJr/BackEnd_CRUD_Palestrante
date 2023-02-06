@@ -1,5 +1,5 @@
 const express = require('express');
-const routerTalkers = require('./RouterTalkers')
+const routerTalkers = require('./RouterTalkers');
 
 const app = express();
 app.use(express.json());
