@@ -4,7 +4,9 @@ const router = express.Router();
 
 const tokenGenerator = require('./TokenGenerator');
 
-router.post('/', async (req, res) => {
+const { isValidEmail, isValidPassword } = require('./LoginAndPasswordValidation');
+
+router.post('/', isValidEmail, isValidPassword, async (req, res) => {
     try {
         return res.status(200).json({ token: tokenGenerator() });
     } catch (error) {
