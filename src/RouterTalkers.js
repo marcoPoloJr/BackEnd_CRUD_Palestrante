@@ -9,7 +9,7 @@ router.get('/', async (_req, res) => {
         if (content.length <= 0) return res.status(200).json([]);
             return res.status(200).json(content);
     } catch (error) {
-        return res.status(500).json(error.message);
+        return res.status(500).json({ message: error.message });
     }
 });
 
@@ -24,7 +24,7 @@ router.get('/:id', async (req, res) => {
 }
         return res.status(200).json(talkerResult);
     } catch (error) {
-        return res.status(500).json(error.message);
+        return res.status(500).json({ message: error.message });
     }
 });
 module.exports = router;

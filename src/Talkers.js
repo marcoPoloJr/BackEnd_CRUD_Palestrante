@@ -22,6 +22,7 @@ const getId = async (id) => {
 };
 
 module.exports = {
+    readTalker,
     allTalkers,
     getId,
 };
