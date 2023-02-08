@@ -21,8 +21,19 @@ const getId = async (id) => {
     return talkerResult;
 };
 
+const writeTalker = async (talker) => {
+    try {
+        const path = join(__dirname, './talker.json');
+        await fs.writeFile(path, JSON.stringify(talker));
+    } catch (error) {
+        console.error('Erro ao salvar o arquivo', error.message);
+    return null;
+    }
+};
+
 module.exports = {
     readTalker,
     allTalkers,
     getId,
+    writeTalker,
 };
