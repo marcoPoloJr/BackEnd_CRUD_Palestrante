@@ -40,10 +40,21 @@ const edit = async (index, cont) => {
     return { ...data[index], name, age, talk: { watchedAt, rate } };
 };
 
+const delet = async (id) => {
+    const data = await readTalker();
+    const index = data.findIndex((i) => i.id === Number(id));
+
+    if (index < 0) return false;
+
+    data.splice(index, 1);
+    writeTalker(data);
+};
+
 module.exports = {
     readTalker,
     allTalkers,
     getId,
     writeTalker,
     edit,
+    delet,
 };

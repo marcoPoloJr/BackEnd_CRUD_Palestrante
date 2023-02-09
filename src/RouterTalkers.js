@@ -67,4 +67,15 @@ isValidRate, isValidNamberRate, async (req, res) => {
         return res.status(500).json({ message: await talkers.readTalker() });
     }
 });
+
+router.delete('/:id', isValidTolken, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const valid = talkers.delet(id);
+        if (valid === false) return res.status(404).json({ message: 'Não encontrado' });
+        return res.status(204).json();
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+});
 module.exports = router;
