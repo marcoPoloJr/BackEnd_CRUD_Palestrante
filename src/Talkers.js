@@ -20,7 +20,6 @@ const writeTalker = async (talker) => {
     }
 };
 
-
 const allTalkers = async () => {
     const file = await readTalker();
     return file;
@@ -64,9 +63,9 @@ const delet = async (id) => {
 
 module.exports = {
     readTalker,
+    writeTalker,
     allTalkers,
     getId,
-    writeTalker,
     edit,
     delet,
 };
