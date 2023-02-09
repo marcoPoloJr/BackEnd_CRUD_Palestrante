@@ -52,4 +52,19 @@ return res.status(201).json(newTalker);
     return res.status(500).json({ message: error.message });
 }
 });
+
+router.put('/:id', isValidTolken, isValidName, isValidAge, isValidTalk, isValidwatchedAt, 
+isValidRate, isValidNamberRate, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const data = await talkers.readTalker();
+        const index = data.findIndex((i) => i.id === Number(id));
+        if (!index) return res.status(404).json({ message: 'Não encontrado' });
+        const results = await talkers.edit(index, req.body);
+        console.log(results);
+        return res.status(200).json(results);
+    } catch (error) {
+        return res.status(500).json({ message: await talkers.readTalker() });
+    }
+});
 module.exports = router;

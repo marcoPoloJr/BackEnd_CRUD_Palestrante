@@ -31,9 +31,19 @@ const writeTalker = async (talker) => {
     }
 };
 
+const edit = async (index, cont) => {
+    const { name, age, talk } = cont;
+    const { watchedAt, rate } = talk;
+    const data = await readTalker();
+    data[index] = { ...data[index], name, age, talk: { watchedAt, rate } };
+    writeTalker(data);
+    return { ...data[index], name, age, talk: { watchedAt, rate } };
+};
+
 module.exports = {
     readTalker,
     allTalkers,
     getId,
     writeTalker,
+    edit,
 };
